@@ -2,8 +2,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
+import Order from './components/Order';
 import Register from './components/Register';
+import PrivateRoute from './components/Route/PrivateRoute';
 import Main from './layout/Main';
+
+
+
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -12,7 +18,11 @@ function App() {
       children:([
         {
           path:'/',
-          element:<Home></Home>
+          element:<PrivateRoute><Home></Home></PrivateRoute>
+        },
+        {
+          path: '/order',
+          element: <PrivateRoute><Order></Order></PrivateRoute>
         },
         {
           path:'/login',
